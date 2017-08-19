@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pkg/pb/partner_service.proto",
+    "description": "Defines package in generated code. For Go, should be same name as directory.",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/ws/v1/partner-by-id": {
+      "get": {
+        "operationId": "GetDataById",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbPartnerDataReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "partnerId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "partnerCode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartnerService"
+        ]
+      }
+    },
+    "/ws/v1/partner-by-key-value": {
+      "get": {
+        "operationId": "GetPartnerDataByKeyValue",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbPartnerDataReply"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PartnerService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "pbIdRequest": {
+      "type": "object",
+      "properties": {
+        "partnerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "partnerCode": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        }
+      }
+    },
+    "pbKeyValueRequest": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        }
+      },
+      "description": "Message definitions."
+    },
+    "pbPartnerDataReply": {
+      "type": "object",
+      "properties": {
+        "PartnerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PartnerCode": {
+          "type": "string"
+        },
+        "Attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Error": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
